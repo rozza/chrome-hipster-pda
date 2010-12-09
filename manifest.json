@@ -10,6 +10,5 @@
   "version": "0.1",
   "chrome_url_overrides": {
     "newtab": "background.html"
-  },
-  "update_url": "http://github.com/rozza/chrome-hipster-pda/raw/master/updates.xml"
+  }
 }
