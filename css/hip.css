@@ -1,0 +1,166 @@
+/*
+ * Generic styles (basic reset)
+ * ==============================
+ */
+
+html, body,
+section, aside, menu, footer,
+div, h3, p, b, ul, li,
+span, a { margin: 0; padding: 0; word-wrap: break-word;}
+section, aside, menu, footer { display: block } /* -- make sure HTML5 elements are blocks */
+
+@font-face {
+  font-family: 'Reenie Beanie';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Reenie Beanie'), local('ReenieBeanie'), url('ReenieBeanie.ttf') format('truetype');
+}
+
+body {
+    background: url('../img/bg.png');
+    font-family: 'Reenie Beanie', arial, serif;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+a { outline: 0; color: #05C; }
+
+#board {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+body.mark #board {
+    background: rgba(0,0,0,.6);
+}
+
+/*
+ * Card styles
+ * =============
+ */
+
+.card {
+    line-height: 1.15em;
+    border-radius: 10px;
+    position: absolute;
+    width: 284px;
+    min-height: 150px;
+    padding: 7px 14px;
+    border: 1px solid #CCC;
+    outline: none;
+    background: #eee url('../img/card.png');
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow: 1px 3px 3px 2px rgba(0,0,0,.4);
+}
+
+.yellow { background: #FC3 url('../img/card.png'); border-color: #FC3 }
+.orange { background: #E83 url('../img/card.png'); border-color: #E83 }
+.blue   { background: #089 url('../img/card.png'); border-color: #089 }
+.red    { background: #D44 url('../img/card.png'); border-color: #D44 }
+.green  { background: #9B4 url('../img/card.png'); border-color: #9B4 }
+
+.card article {min-height: 150px;}
+.card menu { float: right;}
+
+.card menu .close {
+    opacity: 0;
+    background: transparent url('../img/close.png') no-repeat center;
+    position: absolute;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    -webkit-transition: all .500s ease-in-out;
+}
+.card:hover menu .close {
+    opacity: 1;
+}
+
+/* -- to focus on selected and edited cards we make others transparent */
+.mark .card { opacity: .3 }
+.mark #deck .card { opacity: 1 }
+.mark .card.mark { opacity:  1 }
+
+/* Special card states
+   --------------------- */
+.drag {
+    -webkit-box-shadow: 2px 8px 8px 5px rgba(0,0,0,.2);
+    opacity: 0.99;
+}
+
+.target {z-index: 101;}
+
+.pick {
+    z-index: 100;
+    -webkit-transform: scale(1.03);
+    -webkit-box-shadow: 2px 8px 8px 5px rgba(0,0,0,.2);
+}
+
+
+
+/* 
+ * Tags
+ * ======
+ */
+
+.tag {
+    background: rgba(255,255,255,.4);
+    padding: .05em .2em;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 100;
+    -webkit-border-radius: 20px 15px;
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    -webkit-transition: all .25s ease-in-out;
+}
+
+/* -- hovered tag */
+.tag:hover {
+    background: rgba(255,255,255,.8);
+}
+
+/* -- selected tag */
+.tag.mark {
+    background: rgba(255,255,255,.9);
+    -webkit-box-shadow: none; /* inset 1px 1px 1px rgba(100,100,100,.5); -- inset shadow + border radius looks like shit in Chrome */
+}
+
+/* -- make tags on white cards noticeable */
+.white .tag       { background: #EEE }
+.white .tag.hover,
+.white .tag.mark  { background: #DDD }
+
+/*
+ * Deck with new cards
+ * =====================
+ */
+
+#deck {
+  position: fixed;
+  top: 10px; left: -280px;
+}
+
+#deck .card {cursor: copy;}
+
+/* -- disable deck when cards are selected or edited */
+#deck .card menu { display: none;}
+
+/*
+ * Footer
+ * ========
+ */
+
+footer {
+    position: fixed;
+    bottom: 0; right: 0;
+    padding: 5px;
+    font-size: .6em;
+    opacity: .6;
+}
+
+footer:hover { opacity: .8 }
+

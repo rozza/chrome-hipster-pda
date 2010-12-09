@@ -1,0 +1,29 @@
+Hipster PDA
+=============
+A simple extension for Google Chrome which changes your new tab page to a
+page of Hipster PDA cards.
+
+You like to get things done? - Use it as a colorful todo list.
+Are you an agile enthusiast? - Turn in into kanban or scrum board.
+
+About
+-----
+
+I saw taskboard lite from the 10k Apart competition and thought it was awesome 
+and something I could really use daily.
+
+I also use chrome as my main browser so adding it as my background tab I 
+would see my list often.
+
+I also love MooTools but haven't used it in years, so I thought I'd look into 
+it again and have a play round after being in jQuery land.
+
+Future
+------
+
+* Grouping - Add element stack style grouping of tags and dragging of them.
+* Sync across computers.
+
+Inspired by the awesome: 
+    * Taskboard Lite (http://github.com/bartaz/taskboard-lite.git)
+    * Chrome-todo (http://github.com/benhiller/chrome-todo.git)
