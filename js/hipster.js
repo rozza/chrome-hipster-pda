@@ -177,6 +177,7 @@ var HipsterPDA = new Class({
                 }).render($('board'));
                 card.el.tween('left', 75);
                 card.make_draggable();
+                card.el.setStyle('z-index', HipsterPDA.zIndex++);
                 HipsterPDA.cards.push(card);
                 HipsterPDA.save();
             }
