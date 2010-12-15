@@ -78,8 +78,8 @@ var HipsterPDA = new Class({
         // Create the board
         var cards = localStorage.getItem(this.storage_key);
         cards = cards ? JSON.decode(cards) : [
-            { text: "Welcome to Hipster PDA!\n\n * write your todos here!", coords: {}, colour: 'white'},
-            { text: "", coords: {x: 10, y: 80}, colour: 'white'}
+            { text: "Welcome to Hipster PDA!\n\n * write your todos here!", coords: {x: 135, y: 86}, colour: 'white'},
+            { text: "Add Tags by using #\n\n *click on a #tag to highlight all tagged items", coords: {x: 154, y: 286}, colour: 'green'}
         ];
         var $this = this;
         cards.each(function (card) {

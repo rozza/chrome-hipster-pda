@@ -49,7 +49,7 @@ body.mark #board {
     padding: 7px 14px;
     border: 1px solid #CCC;
     outline: none;
-    background: #eee url('../img/card.png');
+    background: #FFFFFE url('../img/card.png');
     cursor: pointer;
     -webkit-border-radius: 5px;
     -webkit-box-shadow: 1px 3px 3px 2px rgba(0,0,0,.4);

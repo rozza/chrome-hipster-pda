@@ -25,5 +25,10 @@ Future
 * Sync across computers.
 
 Inspired by the awesome: 
-    * Taskboard Lite (http://github.com/bartaz/taskboard-lite.git)
-    * Chrome-todo (http://github.com/benhiller/chrome-todo.git)
+    * Taskboard Lite (https://github.com/bartaz/taskboard-lite)
+    * Chrome-todo (https://github.com/benhiller/chrome-todo)
+
+LICENSE
+---------
+
+Copyright 2010 Ross Lawley. Released under MIT License.
