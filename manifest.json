@@ -8,6 +8,9 @@
     "128": "img/icon128.png"
   },
   "version": "1.0",
+   "permissions": [
+    "tabs"
+  ],
   "chrome_url_overrides": {
     "newtab": "background.html"
   }

@@ -189,9 +189,48 @@ var HipsterPDA = new Class({
             cards.push(card.meta());
         });
         localStorage.setItem(this.storage_key, JSON.stringify(cards));
+        
+        var curr_win_id, curr_tab_id;
+        chrome.windows.getCurrent(function(win) {curr_win_id = win.id;});
+        chrome.tabs.getCurrent(function(tab) {curr_tab_id = tab.id;});
+        chrome.windows.getAll({'populate': true}, function(wins) {
+            wins.each(function(win) {
+                win.tabs.each(function(tab) {
+                    if (win.id == curr_win_id && tab.id == curr_tab_id) { return; }
+                    if (tab.url == 'chrome://newtab/') {
+                        chrome.tabs.sendRequest(tab.id, {action: "reload"});
+                    }
+                });
+            });
+        });
+    },
+    
+    reload: function () {
+        $('board').empty();
+        this.cards = [];
+        zIndex: 2;
+        
+        // Create the board
+        var cards = localStorage.getItem(this.storage_key);
+        cards = cards ? JSON.decode(cards) : [
+            { text: "Welcome to Hipster PDA!\n\n * write your todos here!", coords: {x: 135, y: 86}, colour: 'white'},
+            { text: "Add Tags by using #\n\n *click on a #tag to highlight all tagged items", coords: {x: 154, y: 286}, colour: 'green'}
+        ];
+        var $this = this;
+        cards.each(function (card) {
+            var $card = new HipsterPDACard(card);
+            $card.render();
+            $card.make_draggable();
+            $this.cards.push($card);
+        });
     }
 });
 
 window.addEvent('domready', function () {
     HipsterPDA = new HipsterPDA();
+    chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+        if (request.action == 'reload') {
+            HipsterPDA.reload();
+        }
+    });
 });
