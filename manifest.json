@@ -7,7 +7,7 @@
     "48": "img/icon48.png",
     "128": "img/icon128.png"
   },
-  "version": "1.0",
+  "version": "1.0.1",
    "permissions": [
     "tabs"
   ],
