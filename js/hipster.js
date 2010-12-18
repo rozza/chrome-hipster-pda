@@ -1,5 +1,5 @@
 var HipsterPDACard = new Class({
-    card_tmpl: "<section class='card {colour}'><menu><a class='close'></a></menu><article contenteditable=true>{content}</article></section>",
+    card_tmpl: "<section class='card {colour}'><menu><a class='close'></a></menu><article contenteditable=true>{content}</article><footer class='resize'></footer></section>",
     
     initialize: function (options) {
         options = Object.append({
@@ -41,8 +41,8 @@ var HipsterPDACard = new Class({
     
     update: function () {
         var $card = this.el ? this : this.getParent('section').card;
-        if ($card.text != $card.el.innerText) {
-            $card.text = $card.el.innerText;
+        if ($card.text != $card.el.getElement('article').innerText) {
+            $card.text = $card.el.getElement('article').innerText;
             $card.el.getElement('article').innerHTML = $card.get_content();
         }
         $card.el.removeClass('editing');
@@ -60,6 +60,16 @@ var HipsterPDACard = new Class({
                 el.removeClass('drag');
                 el.card.coords = el.getPosition();
                 el.card.update();
+            }
+        });
+        var $this = this;
+        this.el.makeResizable({ handle: $this.el.getElement('footer'), 
+            onBeforeStart: function(el) {
+                console.log(el.card.my_drag)
+                el.card.my_drag.detach();
+            },
+            onComplete: function(el) {
+                el.card.my_drag.attach();
             }
         });
     }

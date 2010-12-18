@@ -61,7 +61,12 @@ body.mark #board {
 .red    { background: #D44 url('../img/card.png'); border-color: #D44 }
 .green  { background: #9B4 url('../img/card.png'); border-color: #9B4 }
 
-.card article {min-height: 150px;}
+.card article { 
+    height:100%;
+    width: 100%;
+    min-height: 150px;
+    overflow: hidden;
+}
 .card menu { float: right;}
 
 .card menu .close {
@@ -155,11 +160,15 @@ body.mark #board {
  */
 
 footer {
-    position: fixed;
-    bottom: 0; right: 0;
-    padding: 5px;
-    font-size: .6em;
-    opacity: .6;
+    width:20px;
+    height:20px;
+    top:100%;
+    margin-top:-20px;
+    left:100%;
+    margin-left:-20px;
+    background: url('../img/resize.png') no-repeat right bottom;
+    position: absolute;
+    cursor: nw-resize;
 }
 
 footer:hover { opacity: .8 }
